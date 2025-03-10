@@ -1,0 +1,129 @@
+{% extends "security/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+                <style>
+        /* Table styling */
+        table {
+            width: 100%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #EAA636;
+            border-radius: 10px;
+            overflow: hidden;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header row styling */
+        th {
+            padding: 15px;
+            background-color: #EAA636;
+            color: black;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        /* Row styling */
+        td {
+            padding: 15px;
+            color: black;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: middle;
+        }
+
+        /* Table row hover effect */
+        tr:hover {
+            background-color: #FDF5EB;
+        }
+
+        /* Image styling */
+        td img {
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Primary button styling */
+        .btn-primary {
+            background-color: #EAA636;
+            width: 100px;
+            border-color: black;
+        }
+
+        .btn-primary:hover {
+            background-color: darkgreen;
+        }
+
+        /* Danger button styling */
+        .btn-danger {
+            background-color: #b13535;
+            width: 100px;
+            border-color: black;
+
+        }
+
+        .btn-danger:hover {
+            background-color: #a02727;
+
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+            th, td {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<table >
+  <tr>
+    <th scope="col">no</th>
+    <th scope="col">slot info</th>
+    <th scope="col">date</th>
+    <th scope="col">from time</th>
+    <th scope="col">to time</th>
+    <th scope="col">customer info</th>
+    <th scope="col">&nbsp;</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.SLOT.slot_no }}<br>
+    {{ i.SLOT.vehicle_type }}<br></td>
+    <td> {{ i.date }}</td>
+    <td> {{ i.from_time }}</td>
+    <td> {{ i.to_time }}</td>
+    <td>&nbsp;{{ i.CUSTOMER.name }}<br>{{ i.CUSTOMER.email }}</td>
+
+
+    <td>
+        <p><a href="/payment_entry/{{ i.id }}#aa" class="btn btn-primary">payment entry</a></p>
+   </td>
+  </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}
